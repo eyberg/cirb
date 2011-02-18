@@ -1,0 +1,26 @@
+lex:
+  contains the repl and cgi script for
+running web applications
+
+www:
+  contains instructions for running
+cgi webit scripts and a sample directory
+
+mod_webit:
+  contains POC of using webit in an apache
+mod for faster scripts and easy installation
+
+thermostats:
+  contains new yacc grammar to go with
+lexer, single variable assignment is now
+available,
+
+
+test:
+  cat test.wb | ./blah
+
+------------------------------------------
+
+AS of now all webit scripts MUST be URL
+escape (safe for echo) until we can get
+a suitable string --> STDIN method going

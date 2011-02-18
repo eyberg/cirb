@@ -1,0 +1,62 @@
+REQUIREMENTS:
+---------------------------------------
+
+  * must be as low ram usage as possible
+  -- has a toggle for memcaching everything by default
+
+  * if using an ORM must be able to do sql with ease
+  * analyzes models for missing/suggestted indices
+    -- if there is a user model suggets an index on user_id in hands
+
+  * no templating engine at all -- too slow
+
+  * has integrated web sockets
+
+  * needs well documented api
+
+  * must have repl or br passed script
+
+----------------------------------
+QUESTIONS:
+
+  * in memory application or data caching??
+  * data access layer??
+  * how does datamapper handle mysql connections?
+    open/close on each request???
+
+-----------------------------------
+WEB SERVING BASICS:
+
+
+def want to be using apxs/dsos rather than having
+to compile the apache server all the time ...
+
+
+Build and install a third-party Apache module, say mod_foo.c, into its own DSO
+mod_foo.so outside of the Apache source tree using apxs:
+$ cd /path/to/3rdparty
+$ apxs -c mod_foo.c
+$ apxs -i -a -n foo mod_foo.la
+
+
+* apache modules are apparently WAY faster than
+  cgi/fastcgi,
+  citation: http://articles.techrepublic.com.com/5100-10878_11-1053527.html
+
+* portability concerns would be why you use cgi
+
+CGI: interpreter is loaded every time
+    you read a webpage
+
+FastCGI: interpreter is loaded at boot time?
+
+mod_php/whatever: a lib within apache that
+has the interpreter????
+
+application server: compiled and loaded once;
+
+apache dso
+
+
+http://127.0.0.1/example-info versus &&
+http://httpd.apache.org/docs/2.2/mod/mod_example.html

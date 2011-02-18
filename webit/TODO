@@ -1,0 +1,7 @@
+* implement debugger
+  : if 'debugger' is set then print out all sorts of shit... otherwise just eval
+
+* add in hashmap for very basic holding of infos
+  http://www.cl.cam.ac.uk/~cwc22/hashtable/
+
+* put up-key/history into REPL

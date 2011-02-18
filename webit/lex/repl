@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+
+/* if REPL:
+ [a-z]\n   printf(">"); */
+
+%%
+
+stop    exit(0); /* printf("Stop command received\n"); */
+start   printf("Start command received\n");
+%%
+
+main()
+{
+  yylex(); 
+}

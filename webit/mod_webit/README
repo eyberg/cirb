@@ -1,0 +1,25 @@
+need to include header files from grammar -- not quite sure
+how to do that yet..
+
+to compile:
+  
+  # c99 mode
+  sudo apxs2 -c -i -Wc,-std=c99 -a mod_webit.c 
+
+  suod /etc/init.d/apache2 restart
+
+
+for api reference to request obj:
+  http://httpd.apache.org/dev/apidoc/apidoc_request_rec.html
+
+
+to run:
+  MUST BE IN apache2.conf:
+
+  LoadModule webit_module /usr/lib/apache2/modules/mod_webit.so
+
+  <VirtualHost 127.0.0.1:82>
+    SetHandler webit-handler
+    ServerName 127.0.0.1
+    DocumentRoot /home/feydr/webit/www/views
+  </VirtualHost>
