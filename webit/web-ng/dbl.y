@@ -4,11 +4,7 @@
 #include <string.h>
 #include "balls.h"
 
-#define VERSION "0.1"
-
 int firstEmptyCommand();
-
-int repl=-1;    /* if set to true then use repl otherwise interpret */
 
 /* obj 'class' 
   just holds name, value for now */
@@ -64,9 +60,7 @@ int firstEmpty() {
 }
 
 void putPrompt() {
-  if(repl == 0) {
-    printf("\n > ");
-  }
+  printf("\n > ");
 }
  
 %}
@@ -184,18 +178,5 @@ int yywrap()
 
 void balls()
 {
-  repl = 0;
-  printf("Webit Version %s", VERSION);
-  putPrompt();
   yyparse();
 }
-
-/*
-main(int argc, char *argv[])
-{
-  repl = 0;
-  printf("Webit Version %s", VERSION);
-  putPrompt();
-  yyparse();
-}
-*/
