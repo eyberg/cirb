@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "balls.h"
 
 #define VERSION "0.1"
 
@@ -181,11 +182,20 @@ int yywrap()
         return 1;
 }
 
-/*  
+void balls()
+{
+  repl = 0;
+  printf("Webit Version %s", VERSION);
+  putPrompt();
+  yyparse();
+}
+
+/*
 main(int argc, char *argv[])
 {
   repl = 0;
   printf("Webit Version %s", VERSION);
   putPrompt();
   yyparse();
-}*/
+}
+*/
