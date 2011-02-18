@@ -1,8 +1,11 @@
 %{
+
 #include <stdio.h>
 #include <string.h>
 
 #define VERSION "0.1"
+
+int firstEmptyCommand();
 
 int repl=-1;    /* if set to true then use repl otherwise interpret */
 
@@ -177,60 +180,12 @@ int yywrap()
 {
         return 1;
 }
-  
+
+/*  
 main(int argc, char *argv[])
 {
-  if(argc > 1) {
-    parseFile(argv[1]);
-  } else {
-    repl = 0;
-    printf("Webit Version %s", VERSION);
-    putPrompt();
-    yyparse();
-  }
-}
-
-
-char * parseReturn(char *filename) {
-  return "parsed";
-}
-
-void parseFile(char *filename) {
-  FILE *infile;
-  char fname[40];
-  char line[100];
-  int lcount;
-
-  char str[100];
-
-  strcpy(fname, filename);
-  printf("filename: %s\n", fname);
-
-  /* Open the file.  If NULL is returned there was an error */
-  if((infile = fopen(fname, "r")) == NULL) {
-    printf("Error Opening File.\n");
-    exit(1);
-  }
-
-  /* only needed for web apps
-  printf("Content-type: text/html\n\n"); */
-
-  /* lex("var blah=shit puts shit"); */
-
-  while( fgets(line, sizeof(line), infile) != NULL ) {
-    lcount++;
-    lex(line);
-  }
-
-  fclose(infile);  /* Close the file */
-}
-
-lex(char *s) {
-  FILE *fp;
-  char *cmd;
-  cmd=malloc(strlen(s)+16);
-  sprintf(cmd, "/bin/echo %s", s); // major vulnerability here ...
-  fp=popen(cmd, "r");
-  dup2(fileno(fp), 0);
-  return(yyparse());
-}
+  repl = 0;
+  printf("Webit Version %s", VERSION);
+  putPrompt();
+  yyparse();
+}*/
