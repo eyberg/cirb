@@ -178,5 +178,7 @@ int yywrap()
 
 void balls()
 {
+  sql_query();
+
   yyparse();
 }
