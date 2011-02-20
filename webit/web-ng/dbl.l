@@ -9,6 +9,7 @@ var                     return TOKVAR;
 puts                    return TOKPUTS;
 \"                      return QUOTES;
 times                   return TIMES;
+class                   return CLASS;
 do                      return DO;
 end                     return END;
 query                   return QUERY;

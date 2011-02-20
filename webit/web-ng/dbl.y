@@ -75,6 +75,8 @@ commands: /* empty */
         ;
 
 command:
+        /*class
+        |*/
         var_assign
         |
         statement
@@ -87,6 +89,14 @@ command:
         |
         puts_var
         ;
+
+class:
+    CLASS methods END;
+
+methods:
+    methods method;
+
+method: DEF '\n' commands '\n' END;
 
 statement:
       expression '\n' { printf("%d\n", $1); putPrompt(); }
@@ -134,7 +144,7 @@ do_loop:
       };
 
 string_assign:
-        TOKVAR WORD EQUALS QUOTES WORD QUOTES '\n'
+        TOKVAR WORD EQUALS TEXT '\n'
         {
           int x = firstEmpty();
           char *name = strdup($2);
@@ -151,9 +161,6 @@ var_assign:
         TOKVAR WORD EQUALS WORD '\n'
         {
           int x = firstEmpty();
-          /* debug mode only
-            printf("assigned %s to %s\n", $4, $3);
-          */
           char *name = strdup($2);
           char *value = strdup($4);
           strcpy(list[x].name, name);
