@@ -1,1 +1,1 @@
-extern "C" void sql_query();
+extern "C" void mysql_lib_query(const char * query);

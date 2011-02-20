@@ -11,6 +11,8 @@ puts                    return TOKPUTS;
 times                   return TIMES;
 do                      return DO;
 end                     return END;
+query                   return QUERY;
+\"[^\n]*\"              yylval=strdup(yytext); return TEXT;
 '.'                     return PERIOD;
 [-+()/*\n]              return *yytext;
 [0-9]+                  yylval=atoi(yytext); return NUMBER;

@@ -1,16 +1,27 @@
 #include <iostream>
+#include <algorithm>
+#include <string>
 #include <mysql.h>
 #include "mysql_lib.h"
 
 using namespace std;
 
-extern "C" void sql_query()
+extern "C" void mysql_lib_query(const char * query)
 {
 
   MYSQL *connection, mysql;
   MYSQL_RES *result;
   MYSQL_ROW row;
   int query_state;
+
+  string rquery = query;
+
+  rquery.erase(
+    remove( rquery.begin(), rquery.end(), '\"' ),
+    rquery.end()
+  );
+
+  cout << rquery << endl;
 
   mysql_init(&mysql);
   connection = mysql_real_connect(&mysql,"host","user","password","database",0,0,0);
@@ -21,7 +32,7 @@ extern "C" void sql_query()
     return;
   }
 
-  query_state = mysql_query(connection, "select * from users;");
+  query_state = mysql_query(connection, rquery.c_str());
 
   if (query_state !=0) {
     cout << mysql_error(connection) << endl;

@@ -65,7 +65,7 @@ void putPrompt() {
  
 %}
 
-%token TOKPUTS EQUALS TOKVAR WORD NUMBER QUOTES TIMES DO PERIOD END
+%token TOKPUTS EQUALS TOKVAR WORD NUMBER QUOTES TIMES DO PERIOD END QUERY TEXT
 %left '+' '-'
 %left '*' '/'
 
@@ -80,6 +80,8 @@ command:
         statement
         |
         string_assign
+        |
+        mysql_query
         |
         do_loop
         |
@@ -112,6 +114,14 @@ expression:
           $$ = $1 + $3;
         }
         | '(' expression ')'            { $$ = $2; };
+
+mysql_query:
+        QUERY '(' TEXT ')' '\n'
+        {
+          printf("%s", $3);
+          mysql_lib_query($3);
+          putPrompt();
+        };
 
 do_loop:
       NUMBER TIMES DO WORD END '\n'
@@ -178,7 +188,5 @@ int yywrap()
 
 void balls()
 {
-  sql_query();
-
   yyparse();
 }
