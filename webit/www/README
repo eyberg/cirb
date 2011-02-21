@@ -1,6 +1,0 @@
-# run Make
-# put this in your /etc/apache2/apache2.conf
-
-ScriptAlias /cgi-bin/ /home/feydr/webit/www/
-
-# modify your views as you see fit

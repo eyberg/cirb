@@ -75,8 +75,8 @@ commands: /* empty */
         ;
 
 command:
-        /*class
-        |*/
+        class
+        |
         var_assign
         |
         statement
@@ -96,7 +96,7 @@ class:
 methods:
     methods method;
 
-method: DEF '\n' commands '\n' END;
+method: DEF commands END;
 
 statement:
       expression '\n' { printf("%d\n", $1); putPrompt(); }
